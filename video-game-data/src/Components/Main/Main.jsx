@@ -9,7 +9,6 @@ const Main = ({ gameData, setGameData, searchResults }) => {
         let response = await axios.get(`http://localhost:8080/all/`)
         setGameData(response.data)
     }
-
     useEffect(() => {
         getGameData();
     }, [])

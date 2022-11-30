@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 function App() {
 
   const [gameData, setGameData] = useState([])
-  const [searchResults, setSearchResults] = useState()
+  const [searchResults, setSearchResults] = useState([])
 
   return (
     <div>
