@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import BarGraph from './BarGraph/BarGraph';
 
-const Main = ({}) => {
+const Main = ({ gameData, setGameData, searchResults }) => {
 
-    const [gamedata, setGameData] = useState([])
 
     async function getGameData() {
-        let response = await axios.get(`http://localhost:8080/all`)
+        let response = await axios.get(`http://localhost:8080/all/`)
         setGameData(response.data)
     }
 
@@ -19,7 +18,7 @@ const Main = ({}) => {
 
     return ( 
         <div>
-            <BarGraph gamedata={gamedata}/>
+            <BarGraph gameData={gameData}/>
 
         </div> 
     );
