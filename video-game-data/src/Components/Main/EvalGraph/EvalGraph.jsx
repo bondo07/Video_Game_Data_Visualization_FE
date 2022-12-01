@@ -26,15 +26,33 @@ const EvalGraph = ({gameData}) => {
     })
     console.log(soldGames)
     let top10Games = soldGames.map((game) => {
-        return ([game.name, game.platform, game.globalsales])
+        return ([game.name, game.globalsales])
     });
     let distinctGames = [...new Set(top10Games)]
     console.log("DISTINCT", distinctGames)
 
+
+    const salesData = [
+        ["VideoGame", "Global Sales\nin Millions"],
+        ...distinctGames
+    ];
+
+    const options = {
+        chart: {
+            title: "Top 10 Games Sold",
+            subtitle: "On a Single Console",
+        },
+    };
     
     return (  
         <div>
-            Hello World
+            <Chart
+            chartType="Bar"
+            width="100%"
+            height="400px"
+            data={salesData}
+            options={options}
+        />
         </div>
     );
 }
