@@ -9,5 +9,3 @@ Endpoint: GET request to get a single video game record by ID
 (5 points): As a developer, I want to write a sample evaluation question of my own that can be answered by analysis of the API data. This question must be clearly stated within the application.
 (10 points): As a video game enthusiast, I want to see a data visualization of the analyzed data regarding the developer created sample evaluation question.
 (10 points): As a video game enthusiast, I want to be able to search for a game and see its details.
-
-

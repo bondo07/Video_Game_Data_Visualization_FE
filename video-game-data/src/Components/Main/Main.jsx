@@ -18,7 +18,7 @@ const Main = ({ gameData, setGameData, searchResults, setSearchResults }) => {
       <BarGraph gameData={gameData} />
       <div>
         {searchResults.length === 0 ? (
-          <EvalGraph />
+          <EvalGraph gameData={gameData}/>
         ) : (
           <SearchResults searchResults={searchResults} setSearchResults={setSearchResults} />
         )}
