@@ -1,30 +1,28 @@
 import { Chart } from "react-google-charts";
+import "./BarGraph.css"
 
 const BarGraph = ({gameData}) => {
     
-    let gameByYear = gameData.filter(game => game.year >= 2013)
+    let newerGames = gameData.filter(game => game.year >= 2013)
+    console.log("Newer Games", newerGames)
 
-    // let ps4 = gameByYear.filter(game => game.platform === "PS4")
-    // let wiiU = gameByYear.filter(game => game.platform === "WiiU") 
-    // let pc = gameByYear.filter(game => game.platform === "PC") 
-    // let n3DS = gameByYear.filter(game => game.platform === "3DS") 
-    // let xBox360 = gameByYear.filter(game => game.platform === "X360") 
-    // let xboxOne = gameByYear.filter(game => game.platform === "XOne") 
-    // let ps2 = gameByYear.filter(game => game.platform === "PS2") 
-    // let dS = gameByYear.filter(game => game.platform === "DS") 
-    // let ps3 = gameByYear.filter(game => game.platform === "PS3") 
-    // let wii = gameByYear.filter(game => game.platform === "Wii") 
-    
-    // let ps4Sales = ps4.map((game) => {
-    //     return(game.globalsales)
-    // })
-    // const initialValue = 0
-    // let tempps4 = ps4Sales.reduce((accumulator, currentValue) => accumulator + currentValue,
-    // initialValue)
-    
-    
+    let allPlatforms = newerGames.map(game => {
+        return game.platform
+    });
+    console.log('all Platforms', allPlatforms)
+
+    let distinctPlatforms = [...new Set(allPlatforms)]
+
+    console.log('Distinct Platforms', distinctPlatforms)
+
+    let globalSalesGraphData = distinctPlatforms.map(platform => {
+        return [platform, salesReducer(platform)]
+    });
+
+    console.log('Global Sales Graph Data', globalSalesGraphData)
+
     function salesReducer(platform) {
-        let tempConsole = gameByYear.filter(game => game.platform === platform)
+        let tempConsole = newerGames.filter(game => game.platform === platform)
         let tempSales = tempConsole.map((game) => {
             return (game.globalsales)
         })
@@ -32,28 +30,24 @@ const BarGraph = ({gameData}) => {
         let tempReduce = tempSales.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
         return(tempReduce)
     };
-    console.log(salesReducer("DS"))
 
     const salesData = [
-        ["Platform", "Sales"],
-        ["PS4", salesReducer("PS4")],
-        ["XOne", salesReducer("XOne")],
-        ["WiiU", salesReducer("WiiU")],
-        ["PC", salesReducer("PC")],
+        ["Platform", "Global Sales\nin Millions"],
+        ...globalSalesGraphData
       ];
       
       const options = {
         chart: {
           title: "Global Game Sales Per Console",
-          subtitle: "Sales",
+          subtitle: "2013 - 2020",
         },
       };
 
     return (  
-        <div>
+        <div className="chart-styling">
             <Chart
             chartType="Bar"
-            // width="100%" Find what css element is controlling this sizing
+            width="100%"
             height="400px"
             data={salesData}
             options={options}
