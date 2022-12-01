@@ -10,7 +10,12 @@ const SearchBar = ({ gameData, setSearchResults }) => {
         const filteredData = gameData.filter((games) => {
             return Object.values(games).join('').toLowerCase().includes(searchCriteria.toLowerCase());
         });
-        setSearchResults(filteredData)
+        if (searchCriteria === ""){
+            setSearchResults([])
+        } else {
+            setSearchResults(filteredData)
+            setSearchCriteria("")
+        }
     }
 
     return ( 
