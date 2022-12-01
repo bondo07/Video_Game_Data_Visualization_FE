@@ -4,7 +4,7 @@ import BarGraph from "./BarGraph/BarGraph";
 import SearchResults from "./SearchResults/SearchResults";
 import EvalGraph from "./EvalGraph/EvalGraph";
 
-const Main = ({ gameData, setGameData, searchResults }) => {
+const Main = ({ gameData, setGameData, searchResults, setSearchResults }) => {
   async function getGameData() {
     let response = await axios.get(`http://localhost:8080/all/`);
     setGameData(response.data);
@@ -12,7 +12,7 @@ const Main = ({ gameData, setGameData, searchResults }) => {
   useEffect(() => {
     getGameData();
   }, []);
-  console.log("Search Results", searchResults)
+  // console.log("Search Results", searchResults)
   return (
     <div>
       <BarGraph gameData={gameData} />
@@ -20,7 +20,7 @@ const Main = ({ gameData, setGameData, searchResults }) => {
         {searchResults.length === 0 ? (
           <EvalGraph />
         ) : (
-          <SearchResults searchResults={searchResults} />
+          <SearchResults searchResults={searchResults} setSearchResults={setSearchResults} />
         )}
       </div>
     </div>

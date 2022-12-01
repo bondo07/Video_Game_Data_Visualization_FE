@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <NavBar gameData={gameData} setSearchResults={setSearchResults} />
-      <Main gameData={gameData} setGameData={setGameData} searchResults={searchResults} />
+      <Main gameData={gameData} setGameData={setGameData} searchResults={searchResults} setSearchResults={setSearchResults}/>
     </div>
   );
 }

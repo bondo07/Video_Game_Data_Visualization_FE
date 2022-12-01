@@ -4,22 +4,22 @@ import "./BarGraph.css"
 const BarGraph = ({gameData}) => {
     
     let newerGames = gameData.filter(game => game.year >= 2013)
-    console.log("Newer Games", newerGames)
+    // console.log("Newer Games", newerGames)
 
     let allPlatforms = newerGames.map(game => {
         return game.platform
     });
-    console.log('all Platforms', allPlatforms)
+    // console.log('all Platforms', allPlatforms)
 
     let distinctPlatforms = [...new Set(allPlatforms)]
 
-    console.log('Distinct Platforms', distinctPlatforms)
+    // console.log('Distinct Platforms', distinctPlatforms)
 
     let globalSalesGraphData = distinctPlatforms.map(platform => {
         return [platform, salesReducer(platform)]
     });
 
-    console.log('Global Sales Graph Data', globalSalesGraphData)
+    // console.log('Global Sales Graph Data', globalSalesGraphData)
 
     function salesReducer(platform) {
         let tempConsole = newerGames.filter(game => game.platform === platform)
