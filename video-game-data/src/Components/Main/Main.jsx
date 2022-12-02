@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import BarGraph from "./BarGraph/BarGraph";
 import SearchResults from "./SearchResults/SearchResults";
 import EvalGraph from "./EvalGraph/EvalGraph";
+import './Main.css'
 
 const Main = ({ gameData, setGameData, searchResults, setSearchResults }) => {
   async function getGameData() {
@@ -20,7 +21,9 @@ const Main = ({ gameData, setGameData, searchResults, setSearchResults }) => {
         {searchResults.length === 0 ? (
           <EvalGraph gameData={gameData}/>
         ) : (
-          <SearchResults searchResults={searchResults} setSearchResults={setSearchResults} />
+          <div className="search-table">
+            <SearchResults searchResults={searchResults} setSearchResults={setSearchResults} />
+          </div>  
         )}
       </div>
     </div>

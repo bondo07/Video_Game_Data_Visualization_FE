@@ -1,8 +1,16 @@
+
+
 .nav-bar {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin: 10px;
-    margin-left: 25px;
-    margin-right: 25px;
+    background: url(../../Assets/pacman.jpg);
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+    height: 170px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: #bd8585;
+    font-size: 25px;
 }

@@ -1,0 +1,22 @@
+.search-button {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #bd8585;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.search-text {
+    width: 125%;
+    height: 27px;
+    border: solid 2px #bd8585bd;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.search {
+    display: flex;
+    width: 18%;
+}

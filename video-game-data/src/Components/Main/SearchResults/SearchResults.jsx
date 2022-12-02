@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './SearchResults.css'
 
 const SearchResults = ({ searchResults, setSearchResults }) => {
     const [selectedGame, setSelectedGame] = useState([]);
@@ -8,7 +9,7 @@ const SearchResults = ({ searchResults, setSearchResults }) => {
     const tableData = searchResults.map((result) => {
         function handleSelectGame() {
             setSelectedGame(      
-            <tr key={result.id}>
+            <tr className="active-row" key={result.id}>
             <td>{result.game_rank}</td>
             <td>{result.name}</td>
             <td>{result.platform}</td>
@@ -20,13 +21,12 @@ const SearchResults = ({ searchResults, setSearchResults }) => {
             <td>{result.japansales}</td>
             <td>{result.othersales}</td>
             <td>{result.globalsales}</td>
-            <button onClick={handleClearSearch}>Button</button>
             </tr>
             )
         };
 
         return (
-            <tr onClick={handleSelectGame} key={result.id}>
+            <tr className="active-row" onClick={handleSelectGame} key={result.id}>
                 <td>{result.name}</td>
                 <td>{result.platform}</td>
                 <td>{result.genre}</td>
@@ -37,9 +37,9 @@ const SearchResults = ({ searchResults, setSearchResults }) => {
 
   
   return selectedGame.length === 0 ? (
-    <table>
+    <table className="styled-table">
       <thead>
-        <tr>
+        <tr className="active-row">
           <th>Name</th>
           <th>Platform</th>
           <th>Genre</th>
@@ -49,7 +49,7 @@ const SearchResults = ({ searchResults, setSearchResults }) => {
       <tbody>{tableData}</tbody>
     </table>
   ) : (
-    <table>
+    <table className="styled-table">
       <thead>
         <tr>
           <th>Game Rank</th>
@@ -63,6 +63,7 @@ const SearchResults = ({ searchResults, setSearchResults }) => {
           <th>Japanese Sales</th>
           <th>Other Sales</th>
           <th>Global Sales</th>
+          <td><button className="clear-button" onClick={handleClearSearch}>Clear Search</button></td>
         </tr>
       </thead>
       <tbody>{selectedGame}</tbody>

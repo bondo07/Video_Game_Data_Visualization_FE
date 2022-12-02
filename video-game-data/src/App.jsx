@@ -9,7 +9,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([])
 
   return (
-    <div>
+    <div className='bg-color'>
       <NavBar gameData={gameData} setSearchResults={setSearchResults} />
       <Main gameData={gameData} setGameData={setGameData} searchResults={searchResults} setSearchResults={setSearchResults}/>
     </div>
