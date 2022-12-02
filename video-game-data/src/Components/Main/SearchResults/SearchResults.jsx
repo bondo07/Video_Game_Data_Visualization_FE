@@ -1,41 +1,40 @@
 import { useState } from "react";
-import './SearchResults.css'
+import "./SearchResults.css";
 
 const SearchResults = ({ searchResults, setSearchResults }) => {
-    const [selectedGame, setSelectedGame] = useState([]);
-    
-    const handleClearSearch = e => setSearchResults([]);
-    
-    const tableData = searchResults.map((result) => {
-        function handleSelectGame() {
-            setSelectedGame(      
-            <tr className="active-row" key={result.id}>
-            <td>{result.game_rank}</td>
-            <td>{result.name}</td>
-            <td>{result.platform}</td>
-            <td>{result.year}</td>
-            <td>{result.genre}</td>
-            <td>{result.publisher}</td>
-            <td>{result.northamericasales}</td>
-            <td>{result.europesales}</td>
-            <td>{result.japansales}</td>
-            <td>{result.othersales}</td>
-            <td>{result.globalsales}</td>
-            </tr>
-            )
-        };
+  const [selectedGame, setSelectedGame] = useState([]);
 
-        return (
-            <tr className="active-row" onClick={handleSelectGame} key={result.id}>
-                <td>{result.name}</td>
-                <td>{result.platform}</td>
-                <td>{result.genre}</td>
-                <td>{result.publisher}</td>
-            </tr>
+  const handleClearSearch = (e) => setSearchResults([]);
+
+  const tableData = searchResults.map((result) => {
+    function handleSelectGame() {
+      setSelectedGame(
+        <tr className="active-row" key={result.id}>
+          <td>{result.game_rank}</td>
+          <td>{result.name}</td>
+          <td>{result.platform}</td>
+          <td>{result.year}</td>
+          <td>{result.genre}</td>
+          <td>{result.publisher}</td>
+          <td>{result.northamericasales}</td>
+          <td>{result.europesales}</td>
+          <td>{result.japansales}</td>
+          <td>{result.othersales}</td>
+          <td>{result.globalsales}</td>
+        </tr>
+      );
+    }
+
+    return (
+      <tr className="active-row" onClick={handleSelectGame} key={result.id}>
+        <td>{result.name}</td>
+        <td>{result.platform}</td>
+        <td>{result.genre}</td>
+        <td>{result.publisher}</td>
+      </tr>
     );
-});
+  });
 
-  
   return selectedGame.length === 0 ? (
     <table className="styled-table">
       <thead>
@@ -63,7 +62,11 @@ const SearchResults = ({ searchResults, setSearchResults }) => {
           <th>Japanese Sales</th>
           <th>Other Sales</th>
           <th>Global Sales</th>
-          <td><button className="clear-button" onClick={handleClearSearch}>Clear Search</button></td>
+          <td>
+            <button className="clear-button" onClick={handleClearSearch}>
+              Clear Search
+            </button>
+          </td>
         </tr>
       </thead>
       <tbody>{selectedGame}</tbody>

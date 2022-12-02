@@ -3,7 +3,7 @@ import axios from "axios";
 import BarGraph from "./BarGraph/BarGraph";
 import SearchResults from "./SearchResults/SearchResults";
 import EvalGraph from "./EvalGraph/EvalGraph";
-import './Main.css'
+import "./Main.css";
 
 const Main = ({ gameData, setGameData, searchResults, setSearchResults }) => {
   async function getGameData() {
@@ -13,17 +13,19 @@ const Main = ({ gameData, setGameData, searchResults, setSearchResults }) => {
   useEffect(() => {
     getGameData();
   }, []);
-  // console.log("Search Results", searchResults)
   return (
     <div>
       <BarGraph gameData={gameData} />
       <div>
         {searchResults.length === 0 ? (
-          <EvalGraph gameData={gameData}/>
+          <EvalGraph gameData={gameData} />
         ) : (
           <div className="search-table">
-            <SearchResults searchResults={searchResults} setSearchResults={setSearchResults} />
-          </div>  
+            <SearchResults
+              searchResults={searchResults}
+              setSearchResults={setSearchResults}
+            />
+          </div>
         )}
       </div>
     </div>
