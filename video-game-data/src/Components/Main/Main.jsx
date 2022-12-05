@@ -22,6 +22,7 @@ const Main = ({ gameData, setGameData, searchResults, setSearchResults }) => {
         ) : (
           <div className="search-table">
             <SearchResults
+              gameData={gameData}
               searchResults={searchResults}
               setSearchResults={setSearchResults}
             />
